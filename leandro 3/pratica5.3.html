@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício P5.3 - Hoisting em JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 30px;
+            color: #333;
+            max-width: 800px;
+        }
+        h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+        code {
+            background-color: #f4f6f7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #c0392b;
+        }
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e1e4e6;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .comentario {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .destaque {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .info-box {
+            background-color: #e8f4f8;
+            border-left: 5px solid #2980b9;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>P5.3: O Efeito do Hoisting (Elevação)</h3>
+    
+    <p>O JavaScript move todas as declarações de variáveis com <code>var</code> para o <strong>topo do seu contexto de execução</strong> (neste caso, o início da função) antes de executar qualquer linha de código.</p>
+    
+    <p>Abaixo está a reescrita de como o motor do JavaScript interpreta, reorganiza e executa o código internamente:</p>
+
+<pre><code>function exibeMensagem() {
+    <span class="destaque"><strong>var mensagem;</strong></span> <span class="comentario">// 1. A declaração é elevada para o topo e inicia com o valor 'undefined'</span>
+
+    if (true) {
+        mensagem = 'Minha mensagem'; <span class="comentario">// 2. A atribuição do valor permanece no local original</span>
+        console.log(mensagem);       <span class="comentario">// Exibe: 'Minha mensagem'</span>
+    }
+    
+    console.log(mensagem);           <span class="comentario">// Exibe: 'Minha mensagem' (Acessível porque o escopo pertence à função)</span>
+}</code></pre>
+
+    <div class="info-box">
+        <strong>Verificação no Console:</strong> Abra o console do navegador (F12) para ver que a função acima é executada perfeitamente, provando que a variável <code>mensagem</code> existe em todo o corpo da função.
+    </div>
+
+    <!-- JavaScript Integrado -->
+    <script>
+        // Função reescrita simulando o comportamento exato do Hoisting
+        function exibeMensagem() {
+            var mensagem; // Elevação da declaração
+
+            if (true) {
+                mensagem = 'Minha mensagem'; // Atribuição original
+                console.log('Primeiro Log (dentro do IF):', mensagem);
+            }
+            
+            console.log('Segundo Log (fora do IF):', mensagem);
+        }
+
+        // Executa automaticamente para demonstração no console
+        console.log("--- Executando P5.3 (Hoisting) ---");
+        exibeMensagem();
+    </script>
+
+</body>
+</html>

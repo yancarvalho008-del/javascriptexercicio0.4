@@ -1,0 +1,42 @@
+1. ( 2 ) criar o elemento;
+2. ( 3 ) manipular o elemento (atributos, classes, estilos);
+3. ( 1 ) inserir o elemento na página.
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criando Elementos com DOM</title>
+    <style>
+        /* Estilo apenas para visualizarmos a manipulação do elemento */
+        .meu-estilo {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Minha Página HTML</h1>
+    <p>O novo elemento será inserido logo abaixo pelo JavaScript seguindo as 3 etapas.</p>
+
+    <script>
+        // ETAPA 1: Criar o elemento
+        const novoElemento = document.createElement('div');
+
+        // ETAPA 2: Manipular o elemento (adicionar texto e classe de estilo)
+        novoElemento.textContent = 'Olá, este elemento foi criado, manipulado e inserido via JavaScript!';
+        novoElemento.classList.add('meu-estilo');
+
+        // ETAPA 3: Inserir o elemento na página (neste caso, no final do body)
+        document.body.appendChild(novoElemento);
+    </script>
+
+</body>
+</html>

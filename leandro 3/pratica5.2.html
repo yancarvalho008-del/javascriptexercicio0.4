@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício P5.2 - Execução de Função</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 30px;
+            color: #333;
+            max-width: 800px;
+        }
+        h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+        code {
+            background-color: #f4f6f7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #c0392b;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 12px;
+        }
+        .botoes-teste {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px dashed #bdc3c7;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>P5.2: Executando a Função com e sem Parênteses</h3>
+    
+    <p>Ao interagir com a função no ambiente do JavaScript, a presença ou ausência dos parênteses muda completamente o comportamento do motor do navegador:</p>
+    
+    <ul>
+        <li>
+            <strong><code>exibeMensagem</code> (sem parênteses):</strong> 
+            O console retorna a <strong>referência/definição da própria função</strong>. O código interno não é executado; o JavaScript apenas lê e exibe a estrutura da função como um objeto manipulável.
+        </li>
+        <li>
+            <strong><code>exibeMensagem()</code> (com parênteses):</strong> 
+            O console de fato <strong>invoca (executa) as instruções</strong> guardadas dentro da função. Os alertas ou logs internos acontecem e o console exibe o valor de retorno (caso não haja um <code>return</code> explícito, exibe <code>undefined</code>).
+        </li>
+    </ul>
+
+    <p><strong>Diferença principal:</strong> Sem parênteses você aponta para a <em>localização/identidade</em> da função; com parênteses você dá a ordem de <em>execução</em> imediata.</p>
+
+    <div class="botoes-teste">
+        <p><strong>Testar na página (Abra também o Console do Navegador [F12]):</strong></p>
+        <button onclick="testarSemParenteses()">Acessar sem parênteses (Referência)</button>
+        <button onclick="testarComParenteses()">Acessar com parênteses (Execução)</button>
+    </div>
+
+    <!-- JavaScript Integrado -->
+    <script>
+        // Definição da função baseada no cenário T5.4
+        function exibeMensagem() {
+            if (true) {
+                var mensagem = 'Minha mensagem';
+                console.log('Log interno do if:', mensagem);
+            }
+            console.log('Log interno do escopo da função:', mensagem);
+        }
+
+        // Funções auxiliares para os botões da interface demonstrativa
+        function testarSemParenteses() {
+            console.log("--- Chamando exibeMensagem ---");
+            console.log(exibeMensagem); 
+            alert("No console foi printada a ESTRUTURA da função. Veja lá!");
+        }
+
+        function testarComParenteses() {
+            console.log("--- Chamando exibeMensagem() ---");
+            exibeMensagem();
+            alert("A função executou os logs internos com sucesso no console!");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+O código exibirá no console exatamente esta sequência de mensagens:
+1. Tudo bem?
+2. Bom dia
+3. Tudo bem?
+Justificativa: Como o var não respeita o bloco do if (conforme respondido na T5.1), a variável mensagemDentroDoIf "vaza" para o escopo global. Por isso, a última linha consegue acessá-la e exibi-la normalmente, em vez de gerar um erro de variável indefinida.

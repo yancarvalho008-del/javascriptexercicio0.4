@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparativo: onchange vs onblur</title>
+</head>
+<body>
+
+    <label for="entrada">Entrada:</label>
+    <!-- Para testar, altere o atributo abaixo de 'onchange' para 'onblur' -->
+    <input type="text" id="entrada" onchange="copiar()">
+
+    <label for="copia">Cópia:</label>
+    <input type="text" id="copia" readonly>
+
+    <script>
+        function copiar() {
+            const entrada = document.getElementById('entrada');
+            const copia = document.getElementById('copia');
+            copia.value = entrada.value;
+            console.log("Função copiar() executada!");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de matrícula</title>
+</head>
+<body>
+    <h1>Getter e setter com this</h1>
+    <p>Matrícula atual: <strong id="matricula-atual"></strong></p>
+
+    <label for="nova-matricula">Nova matrícula:</label>
+    <input id="nova-matricula" type="number" value="456">
+    <button id="alterar-matricula" type="button">Alterar matrícula</button>
+    <p id="mensagem" aria-live="polite"></p>
+
+    <script src="teoria6.5.js"></script>
+    <script>
+        const matriculaAtual = document.getElementById('matricula-atual');
+        const campoNovaMatricula = document.getElementById('nova-matricula');
+        const mensagem = document.getElementById('mensagem');
+
+        matriculaAtual.textContent = pessoa.getMatricula();
+
+        document.getElementById('alterar-matricula').addEventListener('click', () => {
+            const novaMatricula = campoNovaMatricula.valueAsNumber;
+            if (!Number.isFinite(novaMatricula)) {
+                mensagem.textContent = 'Digite uma matrícula válida.';
+                return;
+            }
+
+            pessoa.setMatricula(novaMatricula);
+            matriculaAtual.textContent = pessoa.getMatricula();
+            mensagem.textContent = 'Matrícula atualizada.';
+        });
+    </script>
+</body>
+</html>

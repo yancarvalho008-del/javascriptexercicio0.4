@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Parágrafo</title>
+</head>
+<body>
+
+    <!-- Botão que chama a função JavaScript ao ser clicado -->
+    <button onclick="adicionarParagrafo()">Adicionar Parágrafo</button>
+
+    <!-- Contêiner onde o parágrafo será inserido -->
+    <div id="container"></div>
+
+    <script>
+        // Função responsável por criar e adicionar o novo parágrafo
+        function adicionarParagrafo() {
+            // (1) Captura a div com id container
+            const container = document.getElementById('container');
+            
+            // (2) Cria o elemento <p> e define seu texto
+            const novoParagrafo = document.createElement('p');
+            novoParagrafo.textContent = 'Este é um novo parágrafo adicionado dinamicamente!';
+            
+            // (3) Adiciona-o na página (dentro do contêiner)
+            container.appendChild(novoParagrafo);
+        }
+    </script>
+
+</body>
+</html>
+

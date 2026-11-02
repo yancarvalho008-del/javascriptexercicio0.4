@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Eletrônica Completa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            max-width: 600px;
+            color: #333;
+        }
+        .campo {
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[readonly] {
+            background-color: #f1f2f6;
+            color: #7f8c8d;
+            border-style: dashed;
+        }
+        .botoes {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+        #btnSalvar { background-color: #2ecc71; }
+        #btnMostrar { background-color: #3498db; }
+        #btnRemover { background-color: #e74c3c; }
+        button:hover { opacity: 0.9; }
+        
+        #resposta, #contato {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            min-height: 20px;
+        }
+        #resposta { background-color: #e8f4f8; }
+        #contato { background-color: #f9f9f9; border: 1px solid #eee; }
+
+        /* Estilização da classe exigida pelo exercício */
+        .classe-exemplo {
+            background-color: #fff;
+            border-left: 4px solid #3498db;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h3>P9.1: Agenda Eletrônica Avançada</h3>
+
+    <div class="campo">
+        <label for="txtNome">Nome:</label>
+        <input type="text" id="txtNome" placeholder="Digite o nome">
+    </div>
+
+    <!-- Campo de conferência exigido pelo evento change -->
+    <div class="campo">
+        <label for="txtConferencia">Campo de Conferência (Cópia automática):</label>
+        <input type="text" id="txtConferencia" readonly placeholder="Aguardando alteração do nome...">
+    </div>
+
+    <div class="campo">
+        <label for="txtFone">Telefone:</label>
+        <input type="text" id="txtFone" placeholder="Digite o telefone">
+    </div>
+
+    <div class="botoes">
+        <button id="btnSalvar">Salvar</button>
+        <button id="btnMostrar">Mostrar</button>
+        <button id="btnRemover">Remover Primeiro</button>
+    </div>
+
+    <h4>Confirmação:</h4>
+    <div id="resposta"></div>
+
+    <h4>Lista de Contatos:</h4>
+    <div id="contato"></div>
+
+    <!-- JavaScript Integrado -->
+    <script>
+        // 1. Definição da Classe Contato com Getters e Setters tradicionais
+        class Contato {
+            constructor(nome, fone) {
+                this.nome = nome;
+                this.fone = fone;
+            }
+
+            getNome() { return this.nome; }
+            setNome(nome) { this.nome = nome; }
+            getFone() { return this.fone; }
+            setFone(fone) { this.fone = fone; }
+        }
+
+        // Array para gerenciar múltiplos objetos criados de forma independente
+        const listaContatos = [];
+
+        // 2. Mapeamento de elementos do DOM
+        const inputNome = document.getElementById("txtNome");
+        const inputConferencia = document.getElementById("txtConferencia");
+        const inputFone = document.getElementById("txtFone");
+        
+        const btnSalvar = document.getElementById("btnSalvar");
+        const btnMostrar = document.getElementById("btnMostrar");
+        const btnRemover = document.getElementById("btnRemover");
+        
+        const divResposta = document.getElementById("resposta");
+        const divContato = document.getElementById("contato");
+
+        // 3. Evento 'change' no campo Nome para atualizar o campo de conferência
+        inputNome.addEventListener("change", function() {
+            inputConferencia.value = inputNome.value;
+        });
+
+        // 4. Ouvinte de evento para Salvar (Cria nova instância independente)
+        btnSalvar.addEventListener("click", function() {
+            const nome = inputNome.value.trim();
+            const fone = inputFone.value.trim();
+
+            if (nome === "" || fone === "") {
+                divResposta.textContent = "Por favor, preencha todos os campos.";
+                return;
+            }
+
+            // Cada clique gera uma instância completamente nova isolada na memória
+            const novoContato = new Contato(nome, fone);
+            listaContatos.push(novoContato);
+
+            divResposta.textContent = `Contato de ${novoContato.getNome()} salvo com sucesso! Total: ${listaContatos.length}`;
+            
+            // Limpa os campos após salvar
+            inputNome.value = "";
+            inputFone.value = "";
+            inputConferencia.value = "";
+        });
+
+        // 5. Ouvinte de evento para Mostrar (Cria parágrafos dinâmicos e aplica classes)
+        btnMostrar.addEventListener("click", function() {
+            // Limpa a visualização anterior para não duplicar na listagem visual
+            divContato.innerHTML = "";
+
+            if (listaContatos.length === 0) {
+                divContato.textContent = "Nenhum contato cadastrado.";
+                return;
+            }
+
+            listaContatos.forEach(function(contato) {
+                // Criação do elemento dinâmico
+                const p = document.createElement("p");
+                
+                // Aplica a classe exigida
+                p.classList.add("classe-exemplo");
+                
+                // Define o conteúdo em formato textual seguro
+                p.textContent = `Nome: ${contato.getNome()} | Telefone: ${contato.getFone()}`;
+                
+                // Injeta no elemento pai
+                divContato.appendChild(p);
+            });
+        });
+
+        // 6. Ouvinte de evento para Remover usando querySelector e removeChild
+        btnRemover.addEventListener("click", function() {
+            // Localiza o primeiro parágrafo que possui a classe específica
+            const paragrafoParaRemover = divContato.querySelector(".classe-exemplo");
+
+            if (paragrafoParaRemover) {
+                // Remove chamando o método a partir do elemento pai (divContato)
+                divContato.removeChild(paragrafoParaRemover);
+                
+                // Remove também do nosso array interno de controle de memória
+                listaContatos.shift(); 
+                
+                divResposta.textContent = "O primeiro contato da lista visual foi removido.";
+            } else {
+                divResposta.textContent = "Nenhum parágrafo com a classe '.classe-exemplo' foi localizado para remoção.";
+            }
+        });
+    </script>
+
+</body>
+</html>

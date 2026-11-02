@@ -1,0 +1,6 @@
+• Função Construtora: É uma função comum utilizada como um "molde" ou "fábrica estrutural" para automatizar a criação de múltiplos objetos do mesmo tipo (instâncias), definindo suas propriedades e métodos iniciais. Por convenção, seu nome sempre começa com letra maiúscula (ex: function Pessoa()).
+• Papel da palavra-chave new: Quando uma função construtora é invocada com o new, o JavaScript realiza quatro passos nos bastidores:
+	1. Cria um novo objeto vazio {}.
+	2. Vincula o protótipo (__proto__) desse novo objeto ao protótipo da função construtora.
+	3. Aponta a palavra-chave this para esse novo objeto que acabou de ser criado.
+	4. Retorna o objeto modificado automaticamente (sem precisar de um return explícito).

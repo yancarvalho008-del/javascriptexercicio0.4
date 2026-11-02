@@ -1,0 +1,5 @@
+Quando tentamos acessar uma propriedade ou método em um objeto, o interpretador do JavaScript realiza uma busca em cascata:
+1. Escopo Local: Primeiro, ele procura diretamente dentro do próprio objeto consultado. Se encontrar, usa o valor e encerra a busca.
+2. Protótipo do Objeto: Se não encontrar localmente, ele sobe um degrau e vai procurar no protótipo daquele objeto (__proto__).
+3. Cadeia de Protótipos: Ele continua subindo de protótipo em protótipo (herdando de pais para avós) até chegar no topo da cadeia, que é o Object.prototype.
+4. Fim da Linha: Se a propriedade não for encontrada até o Object.prototype, a busca para e o interpretador retorna undefined.

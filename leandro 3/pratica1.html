@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulação de Div com Botões</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #palavra {
+            border: 1px dashed #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        button {
+            margin-right: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="palavra">
+        Olá, mundo!!!
+        <br><br><br>
+    </div>
+
+    <div>
+        <button onclick="aumentarFonte()">Aumenta</button>
+        <button onclick="mudarCorFonte()">Muda Cor</button>
+        <button onclick="mudarFundo()">Fundo</button>
+    </div>
+
+    <script>
+        // Seleciona a div uma vez para reutilizar nas funções
+        const minhaDiv = document.getElementById('palavra');
+
+        // Função para aumentar a fonte para 60px
+        function aumentarFonte() {
+            minhaDiv.style.fontSize = '60px';
+        }
+
+        // Função para mudar a cor da fonte para azul
+        function mudarCorFonte() {
+            minhaDiv.style.color = 'blue';
+        }
+
+        // Função para mudar o background para vermelho
+        function mudarFundo() {
+            minhaDiv.style.backgroundColor = 'red';
+        }
+    </script>
+
+</body>
+</html>
+

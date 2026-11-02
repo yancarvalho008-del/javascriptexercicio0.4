@@ -1,0 +1,41 @@
+O método document.createElement() serve para criar dinamicamente um novo elemento HTML na memória do navegador utilizando JavaScript. Após a criação, esse elemento pode ser manipulado (adicionando textos, classes ou atributos) e inserido na página web.
+Como argumento, você deve passar uma string com o nome da tag HTML que deseja criar (por exemplo: 'div', 'p', 'button', 'span').
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo createElement</title>
+    <style>
+        /* Estilo simples apenas para destacar a nova div */
+        .minha-classe-estilo {
+            background-color: #f0f0f0;
+            border: 2px solid #333;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Criando Elementos com JavaScript</h1>
+    <p>Abaixo aparecerá a div gerada dinamicamente:</p>
+
+    <!-- O JavaScript será executado aqui e inserido no body -->
+    <script>
+        // 1. Cria o elemento <div> na memória
+        const novaDiv = document.createElement('div');
+
+        // 2. Adiciona conteúdo e classes de estilo à div
+        novaDiv.textContent = "Olá! Eu sou uma nova div criada dinamicamente com JavaScript.";
+        novaDiv.classList.add("minha-classe-estilo");
+
+        // 3. Insere a div na página, anexando-a dentro do <body>
+        document.body.appendChild(novaDiv);
+    </script>
+
+</body>
+</html>

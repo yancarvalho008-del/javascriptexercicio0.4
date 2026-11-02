@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Parágrafo</title>
+</head>
+<body>
+
+    <!-- Removido o onclick e adicionado um id para seleção -->
+    <button id="btnAdicionar">Adicionar Parágrafo</button>
+
+    <!-- Contêiner onde o parágrafo será inserido -->
+    <div id="container"></div>
+
+    <script>
+        // (1) Captura o botão e o contêiner
+        const botao = document.getElementById('btnAdicionar');
+        const container = document.getElementById('container');
+
+        // (2) Adiciona o ouvinte de evento usando addEventListener e uma função anônima
+        botao.addEventListener('click', function() {
+            // (3) Cria o elemento <p> e define seu texto
+            const novoParagrafo = document.createElement('p');
+            novoParagrafo.textContent = 'Este é um novo parágrafo adicionado dinamicamente!';
+            
+            // (4) Adiciona o parágrafo dentro do contêiner
+            container.appendChild(novoParagrafo);
+        });
+    </script>
+
+</body>
+</html>

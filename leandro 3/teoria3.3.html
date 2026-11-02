@@ -1,0 +1,4 @@
+Sem parênteses: minhaFuncaoDeResposta • O que acontece: O JavaScript agenda a função. Ela fica guardada na memória e só roda quando o evento (o clique) acontecer.
+• Comportamento: Correto. O clique dispara a função.
+
+Com parênteses: minhaFuncaoDeResposta() O que acontece: O JavaScript roda a função na mesma hora em que lê aquela linha de código, antes mesmo de qualquer clique acontecer. O addEventListener recebe como segundo argumento o resultado (o return) dessa função, e não a função em si.

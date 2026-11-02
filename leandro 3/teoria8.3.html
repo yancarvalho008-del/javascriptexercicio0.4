@@ -1,0 +1,7 @@
+Não, não é "orientação a objetos real" nos moldes de linguagens puras/clássicas (como Java ou C++), que possuem classes estáticas reais e criam cópias físicas de estruturas na memória.
+O que acontece por baixo dos panos:
+Quando você declara uma classe e métodos no ES6, o motor do JavaScript traduz implicitamente tudo para o formato tradicional:
+1. A class NomeDaClasse é convertida internamente em uma função construtora regular.
+2. Todos os métodos declarados dentro do corpo da classe (fora do construtor) são automaticamente acoplados ao prototype dessa função construtora nos bastidores.
+3. Quando você usa o extends, o JavaScript utiliza a cadeia de protótipos para interligar os objetos através da propriedade interna __proto__.
+Em resumo, as classes do ES6 servem para tornar o código JavaScript mais familiar para desenvolvedores vindos de outras linguagens, ocultando a complexidade da manipulação direta de protótipos de forma automatizada.

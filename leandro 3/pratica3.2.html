@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos de Mouse</title>
+    <style>
+        #palavra {
+            width: 200px;
+            height: 100px;
+            background-color: lightgray; /* Cor inicial */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s; /* Deixa a transição suave */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Criação da div pedida -->
+    <div id="palavra">Passe o mouse aqui</div>
+
+    <script>
+        // Seleciona a div pelo ID
+        const elemento = document.getElementById('palavra');
+
+        // Evento 1: Mouse entra na div (Muda para vermelho)
+        elemento.addEventListener('mouseover', () => {
+            elemento.style.backgroundColor = 'red';
+        });
+
+        // Evento 2: Mouse sai da div (Muda para azul)
+        elemento.addEventListener('mouseout', () => {
+            elemento.style.backgroundColor = 'blue';
+        });
+    </script>
+
+</body>
+</html>

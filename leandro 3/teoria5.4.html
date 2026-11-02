@@ -1,0 +1,31 @@
+Isso funciona por causa do efeito do Hoisting (T5.2).
+Antes de executar a função, o JavaScript "iça" (eleva) a declaração var mensagem; para o topo da função
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração de Hoisting - T5.4</title>
+</head>
+<body>
+
+    <h1>Demonstração de Hoisting (Questão T5.4)</h1>
+    <p>Abra o <strong>Console do Navegador (F12)</strong> para ver a função em ação.</p>
+    <p>A variável <code>mensagem</code> é usada antes de sua linha de declaração original, mas funciona devido ao içamento.</p>
+
+    <script>
+        // Definição da expressão de função
+        var exibeMensagem = function() {
+            mensagem = 'Boa noite'; // Atribuição antes de declarar
+            console.log(mensagem);  // Exibe o valor no console
+            var mensagem;           // Declaração no fim da função
+        }
+
+        // Executando a função para ver o resultado no console
+        exibeMensagem();
+    </script>
+
+</body>
+</html>
+

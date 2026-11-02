@@ -1,0 +1,3 @@
+A principal vantagem de definir métodos diretamente no prototype (em vez de colocá-los dentro da função construtora) é a economia de memória e performance.
+• Dentro da construtora: Cada vez que você cria um objeto com new, o navegador duplica o método na memória. Se você criar 1.000 pessoas, terá 1.000 cópias da mesma função ocupando espaço.
+• No prototype: O método é criado apenas uma vez na memória do navegador. Todos os 1.000 objetos compartilham e acessam o mesmo método através da cadeia de protótipos, tornando a aplicação muito mais leve e eficiente.

@@ -1,0 +1,15 @@
+<input type="text" id="meuInput" placeholder="Clique ou digite aqui...">
+<p id="status">Campo sem foco</p>
+
+<script>
+  const input = document.getElementById('meuInput');
+  const status = document.getElementById('status');
+
+  input.addEventListener('focus', () => {
+    status.innerHTML = 'Campo em foco';
+  });
+
+  input.addEventListener('blur', () => {
+    status.innerHTML = 'Campo sem foco';
+  });
+</script>

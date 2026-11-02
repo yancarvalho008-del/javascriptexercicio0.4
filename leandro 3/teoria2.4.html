@@ -1,0 +1,5 @@
+capturamos novamente a referência ao elemento pai (container) para garantir que estamos manipulando o nó correto diretamente do DOM atualizado, e o elemento a remover foi identificado por meio de um seletor específico (como ID, classe ou posição) ou passado via parâmetro (referência direta/evento).
+Geralmente, a identificação ocorre de três formas principais:
+• Por Seletores do DOM: Utilizando document.querySelector() ou document.getElementById() para buscar o elemento específico através de seu ID, classe ou atributos de dados (data-attributes).
+• Pelo Evento (Contexto dinâmico): Quando a remoção é disparada por um clique (como um botão "Excluir"), o JavaScript identifica o elemento alvo usando event.target (o botão clicado) e navega até o elemento que deve sumir (usando .closest('.item') ou .parentElement).
+• Por Índice/Posição: Em listas, o elemento pode ser identificado pela sua posição (index) dentro de uma coleção de nós (children[index]).

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternador de Estado</title>
+</head>
+<body>
+
+    <p id="palavra">DESLIGADO</p>
+    <button onclick="alternarEstado()">Ligar/Desligar</button>
+
+    <script>
+        function alternarEstado() {
+            // Seleciona o parágrafo pelo ID
+            const paragrafo = document.getElementById("palavra");
+            
+            // Verifica o conteúdo atual e alterna usando innerHTML
+            if (paragrafo.innerHTML === "DESLIGADO") {
+                paragrafo.innerHTML = "LIGADO";
+            } else {
+                paragrafo.innerHTML = "DESLIGADO";
+            }
+        }
+    </script>
+
+</body>
+</html>
